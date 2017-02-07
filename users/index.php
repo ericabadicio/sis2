@@ -1,7 +1,7 @@
 <?php 
-	include '../config.php'
+	include '../config.php';
 	$query = "SELECT studentNo, studentLN, 
-		studentFN, studentCourse, studentEmail, 
+		studentFN, studentEmail, studentCourse, 
 		studentStatus, dateCreated, dateModified 
 		FROM users";
 	$results = $con->query($query);
@@ -33,24 +33,24 @@
 							while ($row = mysqli_fetch_array($results))
 							{
 								$no = $row['studentNo'];
-								$name = $row['studentLN'] + ', ' +
-									$row['studentFN'];
+								$ln = $row['studentLN'];
+								$fn = $row['studentFN'];
 								$email = $row['studentEmail'];
 								$course = $row['studentCourse'];
 								$status = $row['studentStatus'];
-								$added = $row['studentAdded'];
-								$modified = $row['studentModified'];
+								$added = new DateTime($row['dateCreated']);
+								$modified = new DateTime($row['dateModified']);
 
 								echo 
 									"<tr>
 										<td>" . $no . "</td>
-										<td>" . $name . "</td>
+										<td>" . $ln . ', ' . "</td>
 										<td>" . $email . "</td>
 										<td>" . $course . "</td>
 										<td>" . $status . "</td>
-										<td>" . $added . "</td>
-										<td>" . $modified . "</td>
-										<td>" . $no . "</td>
+										<td>" . $added->format('F d, Y g:i A') . "</td>
+										<td>" . $modified->format('F d, Y g:i A') . "</td>
+										<td><a href='details.php?no=" . $no . "'>Edit</a></td>
 									</tr>";
 							}
 						?>
