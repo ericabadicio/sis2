@@ -12,6 +12,7 @@
 	<head>
 		<title>Student Registration</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 	<body>
 		<div class="container">
@@ -44,13 +45,14 @@
 								echo 
 									"<tr>
 										<td>" . $no . "</td>
-										<td>" . $ln . ', ' . "</td>
+										<td>" . $ln . ', ' . $fn . "</td>
 										<td>" . $email . "</td>
 										<td>" . $course . "</td>
 										<td>" . $status . "</td>
 										<td>" . $added->format('F d, Y g:i A') . "</td>
 										<td>" . $modified->format('F d, Y g:i A') . "</td>
-										<td><a href='details.php?no=" . $no . "'>Edit</a></td>
+										<td><a class='btn btn-xs btn-info' href='details.php?no=" . $no . "'><i class='fa fa-edit'></i></a>
+											<a class='btn btn-danger btn-xs btn-info' href='index.php?no=" . $no . "'><i class='fa fa-trash'></i></a></td>
 									</tr>";
 							}
 						?>
